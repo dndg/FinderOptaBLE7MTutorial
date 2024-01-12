@@ -25,20 +25,20 @@ hardware:
 
 ## Panoramica
 
-Nei tutorial precedenti abbiamo discusso [come utilizzare il Finder Opta per
+Nei tutorial precedenti abbiamo mostrato [come utilizzare il Finder Opta per
 leggere da un contatore di energia Finder serie
 7M](https://github.com/dndg/FinderOpta7MTutorial/blob/main/content-it.md) e
 [come configurarlo per far si che agisca da Peripheral
-BLE](https://github.com/dndg/FinderOptaBLEPeripheralTutorial). In questo
-tutorial, mostreremo invece come pubblicare via BLE il contenuto della lettura
-di un contatore del Finder serie 7M, utilizzando un Service BLE su Finder Opta.
-In particolare, questo Service avrà due Characteristic, rispettivamente per la
-mantissa e l'esponente dell'Energia Attiva Importata isurata dal Finder serie
-7M.
+BLE](https://github.com/dndg/FinderOptaBLEPeripheralTutorial/blob/main/content-it.md).
+In questo tutorial, mostreremo invece come pubblicare via BLE il contenuto
+della lettura di un contatore del Finder serie 7M, utilizzando un Service BLE
+su Finder Opta. In particolare, questo Service avrà due Characteristic,
+rispettivamente per la mantissa e l'esponente dell'Energia Attiva Importata
+misurata dal Finder serie 7M.
 
 ## Obiettivi
 
-* Imparare a create un Service BLE con multiple Characteristic in sola lettura
+* Imparare a creare un Service BLE con multiple Characteristic in sola lettura
   sul Finder Opta.
 * Imparare a utilizzare le funzionalità BLE del Finder Opta per trasmettere il
   valore di un contatore certificato MID del Finder serie 7M.
@@ -118,9 +118,9 @@ NFC.
 ### Panoramica del codice
 
 Lo scopo del seguente esempio è configurare Finder Opta come Peripheral BLE,
-crando poi due Characteristic in sola lettura a cui un Central possa accedere
-per leggere la mantissa e l'esponente dell'Energia Attiva Importata misurata da
-un Finder serie 7M connesso al Finder Opta tramite Modbus. In particolare,
+creando poi due Characteristic in sola lettura a cui un Central possa accedere
+per leggere mantissa ed esponente dell'Energia Attiva Importata misurata da un
+Finder serie 7M connesso al Finder Opta tramite Modbus. In particolare,
 configureremo un Service con due Characteristic al suo interno e avvieremo
 l'advertising, attendendo che un Central si connetta: quando questo accadrà,
 andremo a leggere il contatore certificato MID del Finder serie 7M che contiene
@@ -130,7 +130,7 @@ Characteristic.
 #### Setup dello sketch
 
 Nella parte iniziale dello sketch dichiariamo il Service e le Characteristic
-BLE con i relativi UUID. Inoltre, la Characteristic saranno configurata in
+BLE con i relativi UUID. Inoltre, le Characteristic saranno configurate in
 modalità _read_:
 
 ```cpp
@@ -231,19 +231,17 @@ Una volta compilato e caricato lo sketch sul Finder Opta, è possibile
 utilizzare l'app [nRF
 Connect](https://www.nordicsemi.com/Products/Development-tools/nrf-connect-for-mobile)
 per connettersi alla Peripheral BLE e leggere i valori dentro le
-Characteristic.
+Characteristic. Al termine della scansione il Finder Opta comparirà tra i
+dispositivi disponibili:
 
-Al termine della scansione il Finder Opta comparirà tra i dispositivi
-disponibili:
-
-<img src="assets/nrf1.jpg" width=250>
+<img src="assets/nrf1.jpg" width=250 alt="Screenshot di nRF Connect">
 
 Procediamo connettendoci e vedremo apparire un Service e due Characteristic con
 gli UUID assegnati dallo sketch alle Characteristic `inActiveMantissa` e
 `inActiveExponent`. A questo punto clicchiamo sull'icona con freccia che punta
 verso il basso per effetuare una lettura:
 
-<img src="assets/nrf2.jpg" width=250>
+<img src="assets/nrf2.jpg" width=250 alt="Screenshot di nRF Connect">
 
 I valori letti segnalano un'Energia Attiva Importata di _6*10^2 wH = 600 wH =
 0.6 kwH_. Leggiamo ora il Finder serie 7M tramite NFC con [l'applicazione
@@ -251,7 +249,7 @@ Finder
 Tooolbox](https://www.findernet.com/en/worldwide/support/software-and-apps/)
 per verificare di stare leggendo i valori corretti:
 
-<img src="assets/nrf3.jpg" width=250>
+<img src="assets/nrf3.jpg" width=250 alt="Screenshot di nRF Connect">
 
 ## Conclusioni
 

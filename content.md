@@ -28,18 +28,18 @@ In previous tutorials we showed [how to use the Finder Opta to read MID
 counters from a Finder 7M energy
 meter](https://github.com/dndg/FinderOpta7MTutorial/blob/main/content.md#connecting-the-finder-opta-and-finder-7m),
 and also [how to use the device as BLE
-Perpheral](https://github.com/dndg/FinderOptaBLEPeripheralTutorial). In this
-tutorial we will instead show how to publish via BLE the content of a counter
-read from the Finder 7M, using a dedicated BLE Service on the Finder Opta. In
-particular, this Service is going to have two Characteristics, respectively for
-the mantissa and the exponent of the Import Active Energy measured by the
-Finder 7M energy meter.
+Perpheral](https://github.com/dndg/FinderOptaBLEPeripheralTutorial/blob/main/content.md).
+In this tutorial we will instead show how to publish via BLE the content of a
+counter read from the Finder 7M, using a dedicated BLE Service on the Finder
+Opta. In particular, this Service is going to have two Characteristics,
+respectively for the mantissa and the exponent of the Import Active Energy
+measured by the Finder 7M energy meter.
 
 ## Goals
 
 * Learn how to create a BLE Service with multiple read-only Characteristic on
   the Finder Opta.
-* Learn how to take advanta ge of the BLE capabilities of the Finder Opta to
+* Learn how to take advantage of the BLE capabilities of the Finder Opta to
   transmit the value of a MID certified counter of the Finder 7M energy meter.
 
 ## Required Hardware and Software
@@ -225,18 +225,17 @@ Once the sketch has been compiled and uploaded to the Finder Opta, we can use
 the  [nRF
 Connect](https://www.nordicsemi.com/Products/Development-tools/nrf-connect-for-mobile)
 app to connect to the BLE Peripheral and read the values inside the
-Characteristics.
+Characteristics. At the end of a scan, the Finder Opta will appear among the
+available devices:
 
-At the end of a scan, the Finder Opta will appear among the available devices:
-
-<img src="assets/nrf1.jpg" width=250>
+<img src="assets/nrf1.jpg" width=250 alt="Screenshot of nRF Connect">
 
 We then proceed by connecting to the device, after which we see a Service and
 two Characteristic with UUIDs matching the ones assigned by the sketch to the
 `inActiveMantissa` and `inActiveExponent` Characteristics. Let's now click on
 the icons with the arrow pointing down in order to read the values:
 
-<img src="assets/nrf2.jpg" width=250>
+<img src="assets/nrf2.jpg" width=250 alt="Screenshot of nRF Connect">
 
 The read values tell us that we have an Import Active Energy of _6*10^2 wH =
 600 wH = 0.6 kwH_. Now we can read the Finder 7M energy meter via NFC using
@@ -244,7 +243,7 @@ The read values tell us that we have an Import Active Energy of _6*10^2 wH =
 application](https://www.findernet.com/en/worldwide/support/software-and-apps/)
 to check that we are reading a correct value:
 
-<img src="assets/nrf3.jpg" width=250>
+<img src="assets/nrf3.jpg" width=250 alt="Screenshot of nRF Connect">
 
 ## Conclusion
 
